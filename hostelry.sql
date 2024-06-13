@@ -1,5 +1,7 @@
 CREATE DATABASE allstarhostel;
 
+USE allstarhostel;
+
 CREATE TABLE accommodation (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(25) NOT NULL,
@@ -8,7 +10,6 @@ CREATE TABLE accommodation (
     price DECIMAL(6,2) NOT NULL,
     FOREIGN KEY (extras_id) REFERENCES extras(id)
 );
-
 
 CREATE TABLE extras (
     id INT AUTO_INCREMENT PRIMARY KEY,
