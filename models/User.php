@@ -3,11 +3,11 @@
     private $connection;
     private $table_name = "users";
 
-    private $id;
-    private $username;
-    private $password;
-    private $email;
-    private $role;
+    public $id;
+    public $username;
+    public $password;
+    public $email;
+    public $role;
 
     public function __construct($db) {
       $this->connection = $db;
