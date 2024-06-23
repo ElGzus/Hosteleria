@@ -1,12 +1,28 @@
-<!DOCTYPE html>
-    <html lang="eng">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <title>Hostel</title>
-    </head>
-    <body>
-        <h1 class="text-3xl font-bold underline">HOLA MUNDO</h1>
-    </body>
-</html>
+<?php
+require_once './controllers/AccommodationController.php';
+$controller = new AccommodationController();
+
+$action = isset($_GET['action']) ? $_GET['action'] : 'read';
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+
+switch($action){
+    case 'read':
+        $controller->read();
+        break;
+    case 'create':
+        $controller->create();
+        break;
+    case 'update':
+        $controller->update($id);
+        break;
+    case 'reserve':
+        $controller->reserve($id);
+        break;
+    case 'unreserve':
+        $controller->unreserve($id);
+        break;
+    default:
+        $controller->read();
+        break;
+}
+?>
