@@ -1,5 +1,5 @@
 <?php
-  require_once "models/accomodation.php";
+  require_once "models/accommodation.php";
   require_once "config/Database.php";
 
   class AdminController {
@@ -9,7 +9,7 @@
     public function __construct() {
       $database = new Database();
       $this->db = $database->getConnection();
-      $this->accomodation = new Accomodation($this->db);
+      $this->accomodation = new Accommodation($this->db);
     }
 
     public function enable() {
@@ -29,7 +29,6 @@
         $this->accomodation->description = $_POST["description"];
         $this->accomodation->type = $_POST["type"];
         $this->accomodation->price = $_POST["price"];
-        $this->accomodation->image = $_POST["image"];
 
         if ($this->accomodation->create()) {
           print "Habitación habilitada";
