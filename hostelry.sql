@@ -8,7 +8,6 @@ CREATE TABLE accommodations (
     description DECIMAL(5,2) NOT NULL,
     type VARCHAR(10) NOT NULL,
     price DECIMAL(6,2) NOT NULL,
-    FOREIGN KEY (extras_id) REFERENCES extras(id)
 );
 
 CREATE TABLE users (
