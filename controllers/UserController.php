@@ -67,5 +67,23 @@
       // Redirect to the login page after destroying the session
       header("Location: login.php");
     }
+
+    public function account() {
+      // The session_start() function is used to start a new session or resume the existing session
+      session_start();
+
+      // Check if the session variable user_id is not set
+      if (!isset($_SESSION["user_id"])) {
+        // Redirect to the login page if the user is not logged in
+        header("Location: login.php");
+        // exit() is used to stop the script from executing further
+        exit();
+      }
+
+      // Call the readAll() method from the User class to get all the users
+      $statement = $this->user->readAll();
+      // Include the account view to display the user's account details
+      include "views/account.php";
+    }
   }
 ?>

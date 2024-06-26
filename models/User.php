@@ -58,5 +58,12 @@
       // return false if the record is not found or the password is incorrect
       return false;
     }
+
+    public function readAll() {
+      $query = "SELECT * FROM " . $this->table_name;
+      $statement = $this->connection->prepare($query);
+      $statement->execute();
+      return $statement;
+    }
   }
 ?>
