@@ -13,3 +13,5 @@
         </form>
     </section>
 </article>
+
+<?php include "templates/footer.php"; ?>

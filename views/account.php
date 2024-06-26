@@ -31,3 +31,5 @@
       </select>
       <input type="submit" value="Add">
 </form>
+
+<?php include "templates/footer.php"; ?>

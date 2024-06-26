@@ -12,3 +12,5 @@
     <input type="text" name="image" id="image">
     <input type="submit" value="Add">
 </form>
+
+<?php include "templates/footer.php"; ?>

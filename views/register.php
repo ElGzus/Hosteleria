@@ -19,3 +19,5 @@
         <input type="submit" value="Sign up" class="p-2 mt-4 block w-full rounded-md bg-yellow-600 text-white">
     </form>
 </section>
+
+<?php include "templates/footer.php"; ?>
