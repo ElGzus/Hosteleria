@@ -11,13 +11,6 @@ CREATE TABLE accommodations (
     FOREIGN KEY (extras_id) REFERENCES extras(id)
 );
 
-CREATE TABLE extras (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(25) NOT NULL,
-    description DECIMAL(5,2) NOT NULL,
-    price DECIMAL(6,2) NOT NULL 
-);
-
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
