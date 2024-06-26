@@ -2,7 +2,7 @@ CREATE DATABASE allstarhostel;
 
 USE allstarhostel;
 
-CREATE TABLE accommodation (
+CREATE TABLE accommodations (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(25) NOT NULL,
     description DECIMAL(5,2) NOT NULL,
