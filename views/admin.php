@@ -1,7 +1,7 @@
 <?php include "templates/header.php"; ?>
 
 <h1>Add accommodations</h1>
-<form action="" method="POST">
+<form action="/admin" method="POST">
     <label for="name">Name</label>
     <input type="text" name="name" id="name">
     <label for="description">Description</label>

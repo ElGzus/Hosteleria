@@ -20,7 +20,7 @@
 </article>
 
 <h2>Add accommodation</h2>
-<form action="" method="POST">
+<form action="/account" method="POST">
       <select name="accommodation_id">
             <?php
                 $statement = $this->accommodation->readAll();

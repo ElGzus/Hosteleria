@@ -1,6 +1,6 @@
 <?php
-  require_once "models/User.php";
-  require_once "config/Database.php";
+  require_once __DIR__ . "./models/User.php";
+  require_once __DIR__ . "./config/Database.php";
 
   class UserController {
     private $db;
@@ -23,7 +23,8 @@
 
         if ($this->user->register()) {
           // Redirect to the login page if the user is registered successfully
-          header("Location: login.php");
+          header("Location: /login.php");
+          exit();
         } else {
           print "Error al registrar el usuario";
         }
@@ -47,7 +48,8 @@
           $_SESSION["username"] = $this->user->username;
           $_SESSION["role"] = $this->user->role;
           // Redirect to the account page if the user is logged in successfully
-          header("Location: account.php");
+          header("Location: /account.php");
+          exit();
         } else {
           print "Usuario o contraseña incorrectos";
         }
@@ -65,7 +67,7 @@
       // 🤯 D-E-S-T-R-O-Y
       session_destroy();
       // Redirect to the login page after destroying the session
-      header("Location: login.php");
+      header("Location: /login.php");
     }
 
     public function account() {
@@ -75,7 +77,7 @@
       // Check if the session variable user_id is not set
       if (!isset($_SESSION["user_id"])) {
         // Redirect to the login page if the user is not logged in
-        header("Location: login.php");
+        header("Location: /login.php");
         // exit() is used to stop the script from executing further
         exit();
       }

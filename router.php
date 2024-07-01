@@ -1,39 +1,56 @@
 <?php
 session_start();
-require "controllers/AccommodationController.php";
-require "controllers/UserController.php";
-require "controllers/AdminController.php";
+require_once "/controllers/UserController.php";
+require_once "/controllers/AccommodationController.php";
+require_once "/controllers/AdminController.php";
 
-$request = $_SERVER["REQUEST_URI"];
+$userController = new UserController();
+$accommodationController = new AccommodationController();
+$adminController = new AdminController();
+
+$request = $_SERVER['REQUEST_URI'];
+$request = strtok($request, '?');
 
 switch ($request) {
-    case "/":
-        $controller = new AccommodationController();
-        $controller->create();
+    case '':
+    case '/':
+    case 'index':
+        // Redirigir a la página de login por defecto
+        header('Location: ./views/login.php');
         break;
-    case "/register":
-        $controller = new UserController();
-        $controller->register();
+    case '/register' :
+        $userController->register();
         break;
-    case "/login":
-        $controller = new UserController();
-        $controller->login();
+    case '/login' :
+        $userController->login();
         break;
-    case "/account":
-        $controller = new UserController();
-        $controller->account();
+    case '/logout' :
+        $userController->logout();
         break;
-    case "/admin":
-        $controller = new AdminController();
-        $controller->enable();
+    case '/account' :
+        $userController->account();
         break;
-    case "/logout":
-        $controller = new UserController();
-        $controller->logout();
+    case '/admin' :
+        $adminController->enable();
+        break;
+    case '/accommodation/create' :
+        $accommodationController->create();
+        break;
+    case '/accommodation/read' :
+        $accommodationController->read();
+        break;
+    case (preg_match('/\/accommodation\/update\/(\d+)/', $request, $matches) ? true : false) :
+        $accommodationController->update($matches[1]);
+        break;
+    case (preg_match('/\/accommodation\/reserve\/(\d+)/', $request, $matches) ? true : false) :
+        $accommodationController->reserve($matches[1]);
+        break;
+    case (preg_match('/\/accommodation\/unreserve\/(\d+)/', $request, $matches) ? true : false) :
+        $accommodationController->unreserve($matches[1]);
         break;
     default:
         http_response_code(404);
-        require "views/404.php";
+        include 'views/404.php';
         break;
 }
 ?>
